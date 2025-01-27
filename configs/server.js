@@ -6,11 +6,17 @@ import helmet from 'helmet'
 import morgan from 'morgan'
 
 import { dbConnection } from './mongo.js'
+import userRoutes from "../user/user.routes.js"
 
 const configs = (app) => {
+    app.use(express.json())
     app.use(cors())
     app.use(helmet())
     app.use(morgan('dev'))
+}
+
+const routes = (app) => {
+    app.use("/adoptionsystem/v1/users", userRoutes)
 }
 
 const connectDB = async () => {
@@ -26,6 +32,7 @@ export const initServer = () => {
     try {
         configs(app)
         connectDB()
+        routes(app)
         app.listen(process.env.PORT)
         console.log(`Server running on port: ${process.env.PORT}`)
     } catch (err) {
