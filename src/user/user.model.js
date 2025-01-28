@@ -11,6 +11,9 @@ const UserSchema = mongoose.Schema({
         required: [true, "Name is required"],
         macLength: [25, "Name cannot exceed 25 characters."]
     },
+    profilePicture: {
+        type: String
+    },
     email: {
         type: String,
         required: [true, "E-mail is required."],
@@ -30,7 +33,11 @@ const UserSchema = mongoose.Schema({
     status:{
         type: Boolean,
         default: true
-    }
+    },
+},
+{
+    versionKey: false,
+    timeStamps: true
 })
 
 export default mongoose.model("User", UserSchema)

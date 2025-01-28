@@ -6,9 +6,9 @@ import helmet from 'helmet'
 import morgan from 'morgan'
 
 import { dbConnection } from './mongo.js'
-import userRoutes from "../user/user.routes.js"
+import authRoutes from "../src/auth/auth.routes.js"
 
-const configs = (app) => {
+const middlewares = (app) => {
     app.use(express.json())
     app.use(cors())
     app.use(helmet())
@@ -16,7 +16,7 @@ const configs = (app) => {
 }
 
 const routes = (app) => {
-    app.use("/adoptionsystem/v1/users", userRoutes)
+    app.use("/adoptionsystem/v1/auth", authRoutes)
 }
 
 const connectDB = async () => {
@@ -30,7 +30,7 @@ const connectDB = async () => {
 export const initServer = () => {
     const app = express()
     try {
-        configs(app)
+        middlewares(app)
         connectDB()
         routes(app)
         app.listen(process.env.PORT)
