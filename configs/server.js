@@ -4,6 +4,7 @@ import express from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
 import morgan from 'morgan'
+import apiLimiter from "../src/middlewares/validate-petition-amount.js"
 
 import { dbConnection } from './mongo.js'
 import authRoutes from "../src/auth/auth.routes.js"
@@ -13,6 +14,7 @@ const middlewares = (app) => {
     app.use(cors())
     app.use(helmet())
     app.use(morgan('dev'))
+    app.use(apiLimiter)
 }
 
 const routes = (app) => {
