@@ -4,10 +4,10 @@ import express from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
 import morgan from 'morgan'
-import apiLimiter from "../src/middlewares/validate-petition-amount.js"
 
 import { dbConnection } from './mongo.js'
 import authRoutes from "../src/auth/auth.routes.js"
+import apiLimiter from "../src/middlewares/validate-petition-amount.js"
 
 const middlewares = (app) => {
     app.use(express.urlencoded({extended: false}))

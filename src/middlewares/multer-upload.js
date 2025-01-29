@@ -21,11 +21,8 @@ const createMulterConfig = (destinationPath) => {
             }
         }),
         fileFilter: (req, file, cb) => {
-            if (MIMETYPES.includes(file.mimetype)) {
-                cb (null, true)
-            } else {
-                cb (new Error (`Only files of these extensions are accepted: ${MIMETYPES.join("")}`))
-            }
+            if (MIMETYPES.includes(file.mimetype)) cb (null, true)
+            else cb (new Error (`Only files of these extensions are accepted: ${MIMETYPES.join("")}`))
         },
         limits: {
             fileSize: MAX_SIZE
