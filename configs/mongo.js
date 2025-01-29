@@ -17,7 +17,7 @@ export const dbConnection = async () => {
         })
 
         mongoose.connection.on("reconnected", () => {
-            console.log("MongoDB | connected to MongoDB Service")
+            console.log("MongoDB | reconnected to MongoDB Service")
         })
 
         mongoose.connection.on("disconnected", () => {
