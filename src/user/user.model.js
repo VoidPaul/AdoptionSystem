@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import { Schema, model } from "mongoose";
 
-const UserSchema = mongoose.Schema({
+const userSchema = Schema({
     name: {
         type: String,
         required: [true, "Name is requried."],
@@ -9,10 +9,17 @@ const UserSchema = mongoose.Schema({
     surname: {
         type: String,
         required: [true, "Name is required"],
-        macLength: [25, "Name cannot exceed 25 characters."]
+        maxLength: [25, "Name cannot exceed 25 characters."]
     },
-    profilePicture: {
-        type: String
+    username: {
+        type: String,
+        required: [true, "Username required."],
+        unique: true
+    },
+    password: {
+        type: String,
+        required: [true, "Password required."],
+        minLength: 8
     },
     email: {
         type: String,
@@ -24,6 +31,9 @@ const UserSchema = mongoose.Schema({
         required: [true, "Phone is required."],
         minLength: 8,
         maxLength: 8
+    },
+    profilePicture: {
+        type: String
     },
     role:{
         type: String,
@@ -40,4 +50,4 @@ const UserSchema = mongoose.Schema({
     timeStamps: true
 })
 
-export default mongoose.model("User", UserSchema)
+export default model("User", userSchema)

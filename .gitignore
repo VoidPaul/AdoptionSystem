@@ -1,4 +1,7 @@
 /.vscode/**
 /node_modules/**
 
+/public/uploads/profile-pictures/**
+/public/uploads/pet-pictures/**
+
 package-lock.json
