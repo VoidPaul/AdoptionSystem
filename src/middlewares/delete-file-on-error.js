@@ -2,6 +2,7 @@ import fs from "fs/promises"
 import { join } from "path"
 
 export const deleteFileOnError = async (req, res, err, next) => {
+
     if (req.file && req.filePath) {
         const filePath = join(req.filePath, req.file.filename)
         try {
