@@ -1,4 +1,3 @@
-import { response } from "express"
 import fs from "fs/promises"
 import { join } from "path"
 
@@ -13,7 +12,7 @@ export const deleteFileOnError = async (req, res, err, next) => {
     }
     if (err.status === 400 || err.errors) {
         return res.status(400).json({
-            succes: false,
+            success: false,
             errors: err.errors,
         })
     }

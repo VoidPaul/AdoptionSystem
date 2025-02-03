@@ -50,4 +50,10 @@ const userSchema = Schema({
     timeStamps: true
 })
 
+userSchema.methods.toJSON = function() {
+    const { password, _id, ...user} = this.toObject()
+    user.uid = _id
+    return user
+}
+
 export default model("User", userSchema)
