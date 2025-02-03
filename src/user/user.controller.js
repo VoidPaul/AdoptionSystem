@@ -77,6 +77,8 @@ export const updatePassword = async (req, res) => {
         const { uid } = req.params
         const { newPassword } = req.body
 
+        const 
+
         const encryptedPassword = await hash(newPassword)
 
         await User.findByIdAndUpdate(uid, {password: encryptedPassword})
