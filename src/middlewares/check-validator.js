@@ -11,7 +11,7 @@ export const registerValidator = [
     body("email", "Ingrese un e-mail válido.").isEmail(),
     body("email").custom(existentEmail),
     body("username").custom(existentUser),
-    body("password").isStrongPassword({minSymbols: 0}),
+    body("password").isStrongPassword(),
     validateFields,
     deleteFileOnError
 ]

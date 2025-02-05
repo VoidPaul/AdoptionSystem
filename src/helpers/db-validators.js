@@ -17,7 +17,7 @@ export const existentUser = async(username = '') => {
 }
 
 export const userExists = async(uid = '') => {
-    const exists = await User.findBy({uid})
+    const exists = await User.findBy(uid)
 
     if (!exists) {
         throw new Error("El usuario no existe.")

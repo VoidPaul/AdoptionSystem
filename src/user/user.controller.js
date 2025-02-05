@@ -77,7 +77,16 @@ export const updatePassword = async (req, res) => {
         const { uid } = req.params
         const { newPassword } = req.body
 
-        const 
+        const user = await User.findById(uid)
+
+        const matchPassword = await verify(user.password, newPassword)
+        
+        if (matchPassword) {
+            return res.status(400).json({
+                success: false,
+                message: "La nueva contraseña no puede ser igual a la anterior."
+            })
+        }
 
         const encryptedPassword = await hash(newPassword)
 

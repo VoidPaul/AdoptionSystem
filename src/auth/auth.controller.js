@@ -34,7 +34,7 @@ export const login = async (req, res) => {
             $or: [{email: email}, {username: username}]
         })
 
-        if (!user) {
+        if (!user || !email) {
             return res.status(404).json({
                 message: "Invalid credentials.",
                 error: "User or E-mail does not exist."
